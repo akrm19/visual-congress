@@ -1,11 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Chart from '../src/components/Chart';
 
 function App() {
+  const testData = [9, 8, 7, 6, 1];
   return (
     <div className="App">
       <header className="App-header">
+      <Chart data={testData} />
+
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
