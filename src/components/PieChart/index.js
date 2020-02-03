@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 
-const Chart = (props) => {
+const PieChart = (props) => {
   const isEmpty  = !props.data || props.data.length === 0;
   const svgRef = useRef(null);
   const color = d3.scaleOrdinal(d3.schemeCategory10);
@@ -39,4 +39,4 @@ const Chart = (props) => {
    );
 }
  
-export default Chart;
+export default PieChart;
