@@ -6,6 +6,8 @@ const getLegislatorsGenderData = (legislators) => {
   const genderData = legislators.reduce((obj, legislator) => {
     const gender = legislator.gender ? legislator.gender.toLowerCase() : null
     if(!gender) {
+      if(!obj['notAvailable'])
+        obj['notAvailable'] = 0;
       obj.notAvailable++;
     } else if (gender === 'm') {
       obj.male++;
@@ -17,7 +19,7 @@ const getLegislatorsGenderData = (legislators) => {
       obj[gender]++;
     }
     return obj;
-  }, { male: 0, female: 0, notAvailable:0 });
+  }, { male: 0, female: 0});
 
   for(let [key, value] of Object.entries(genderData)) {
     results.push({label: key, value: value});
