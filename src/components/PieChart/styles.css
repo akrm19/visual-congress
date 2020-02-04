@@ -1,0 +1,8 @@
+.piechart_label {
+    font-size: xx-small;
+}
+
+.piechart_path  {
+    stroke: #fff;
+    stroke-width: .5px;
+}

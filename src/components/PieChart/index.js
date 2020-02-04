@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import './styles.css';
 
 const PieChart = (props) => {
   const isEmpty  = !props.data || props.data.length === 0;
@@ -14,8 +15,12 @@ const PieChart = (props) => {
       return entry.value;
     });
   const arc = d3.arc()  
-    .innerRadius(0)
-    .outerRadius(radius);
+    .outerRadius(radius)
+    .innerRadius(0);
+
+  const label = d3.arc()  
+    .outerRadius(radius - 80)
+    .innerRadius(radius);
 
   useEffect(() => {
     if(isEmpty) return;
@@ -27,12 +32,38 @@ const PieChart = (props) => {
     let arcGroups = group.selectAll('path')
       .data(pie(props.data ))
       .enter()
-        .append('path')
-        // .attr('class', 'arc')
-        .attr('fill', function (d,i) {
-          return color(i);
-        })
-        .attr('d', arc);
+        .append('g');
+
+    arcGroups
+      .append('path')
+      .attr('class', 'piechart_path')
+      .attr('fill', function (d,i) {
+        return color(i);
+      })
+      .attr('d', arc);
+      // .attr('d', function(d) {
+      //   return arc(d);
+      // });
+
+      // .enter()
+      //   .append('path')
+      //   .attr('class', 'arc')
+      //   .attr('fill', function (d,i) {
+      //     return color(i);
+      //   })
+      //   .attr('d', arc);
+
+    //Add labels
+    arcGroups
+      .append('text')
+      .attr('class', 'piechart_label')
+      .attr('text-anchor', 'middle')
+      .attr('transform', function(d) {
+        return "translate(" + label.centroid(d) + ")"; 
+      })
+      .text(function(d) {
+        return `${d.data.label} (${d.data.value})`;
+      });
   }, []);
 
 
