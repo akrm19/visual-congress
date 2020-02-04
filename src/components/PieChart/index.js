@@ -8,7 +8,11 @@ const PieChart = (props) => {
   const chartHeight = props.height || 200;
   const chartWidth = props.height || 200;
   const radius = Math.min(chartHeight, chartWidth) / 2;
-  const pie = d3.pie();
+  const pie = d3
+    .pie()
+    .value(function(entry) {
+      return entry.value;
+    });
   const arc = d3.arc()  
     .innerRadius(0)
     .outerRadius(radius);
