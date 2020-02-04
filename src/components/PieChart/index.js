@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import styled from 'styled-components';
 import * as d3 from 'd3';
 import './styles.css';
 
@@ -66,11 +67,23 @@ const PieChart = (props) => {
       });
   }, []);
 
+  const SvgContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+  `;
+
+  const Title = styled.h2`
+    width: 100%;
+    text-align: center;
+  `;
 
   return ( 
-    <div>
+    <SvgContainer>
+      {!isEmpty &&
+        <Title>{props.title}</Title>
+      }
       <svg height={chartHeight} width={chartWidth} ref={svgRef}/>
-    </div>
+    </SvgContainer>
    );
 }
  
