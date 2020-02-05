@@ -34,7 +34,7 @@ const LegislatorGenderPieChart = (props) => {
 
   return ( 
     <div>
-      <PieChart data={result} />
+      <PieChart data={result} title={props.title} />
     </div>
    );
 }
