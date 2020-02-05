@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import MultiCharContainer from '../src/components/MultiChartContainer';
 import LegislatorGenderPieChart from '../src/components/LegislatorsGenderPieChart';
 import SampleSenateResult from '../src/assets/samples/legislators_senate';
 import SampleCongressResult from '../src/assets/samples/legislators_congress';
@@ -16,25 +16,19 @@ function App() {
   // console.log(SampleSenateResult);
   return (
     <div className="App">
+      <h2>Congress Visualized</h2>
+        <MultiCharContainer title={'Current Congress (116th) by Gender'}>
+        <LegislatorGenderPieChart title={'Senate'} legislators={sampleSenateMembers}  />
+        <LegislatorGenderPieChart title={'Congress'} legislators={sampleCongressMembers}  />
+        <LegislatorGenderPieChart title={'Joined'} legislators={[...sampleCongressMembers, ...sampleSenateMembers]} />
+      </MultiCharContainer>
       <header className="App-header">
-        <LegislatorGenderPieChart legislators={sampleSenateMembers} />
+        <LegislatorGenderPieChart legislators={sampleSenateMembers} title={'Senate'} />
         <LegislatorGenderPieChart legislators={sampleCongressMembers} />
         <LegislatorGenderPieChart legislators={[...sampleCongressMembers, ...sampleSenateMembers]} />
-
-
-
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
