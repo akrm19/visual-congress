@@ -12,8 +12,8 @@ const GenderByCongressNumber = ({ congressNumber, title }) => {
     ? JSON.parse(localStorage.getItem(senateCacheKey)) : undefined);
   const [congressResults, setCongressResults] = useState(localStorage.getItem(congressCacheKey) 
     ? JSON.parse(localStorage.getItem(congressCacheKey)) : undefined);
-  const congressApiUrl = `http://www.write2congress.com/api/congress/v1/${congressNumber}/house/members.json?&offset=0`;
-  const senateApiUrl = `http://www.write2congress.com/api/congress/v1/${congressNumber}/senate/members.json?&offset=0`;
+  const congressApiUrl = `https://write2congress.azurewebsites.net/api/congress/v1/${congressNumber}/house/members.json?&offset=0`;
+  const senateApiUrl = `https://www.write2congress.com/api/congress/v1/${congressNumber}/senate/members.json?&offset=0`;
   
   useEffect(() => {
     if(!senateResults) {
