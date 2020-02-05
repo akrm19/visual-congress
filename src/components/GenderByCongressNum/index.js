@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MultiChartContainer from '../MultiChartContainer';
 import LegislatorGenderPieChart from '../LegislatorsGenderPieChart';
+import { timeDay } from 'd3';
 
-const GenderByCongressNumber = ({ congressNumber }) => {
-  const [isLoading, setIsLoading] = useState(false);
+const GenderByCongressNumber = ({ congressNumber, title }) => {
+  // const [isLoading, setIsLoading] = useState(false);
   const [senateResults, setSenateResults] = useState();
   const [congressResults, setCongressResults] = useState();
   const congressApiUrl = `http://www.write2congress.com/api/congress/v1/${congressNumber}/house/members.json?&offset=0`;
@@ -27,7 +28,7 @@ const GenderByCongressNumber = ({ congressNumber }) => {
   }, [congressApiUrl])
 
   return ( 
-    <MultiChartContainer title={isLoading ? `Loading...` : `${congressNumber}th U.S. Congress by Gender`}>
+    <MultiChartContainer title={title ? title : `${congressNumber}th U.S. Congress by Gender`}>
       {(senateResults && senateResults.length > 0) &&
         <LegislatorGenderPieChart title={'Senate'} legislators={senateResults} />
       }
