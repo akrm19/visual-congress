@@ -72,7 +72,7 @@ const PieChart = (props) => {
     flex-direction: column;
   `;
 
-  const Title = styled.h2`
+  const Title = styled.h5`
     width: 100%;
     text-align: center;
   `;

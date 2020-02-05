@@ -18,7 +18,7 @@ const MultiCharContainer = ({ children, title }) => {
       margin-bottom:.5em;
     }
   `;
-  const Title = styled.h5`
+  const Title = styled.h4`
   `;
 
   return ( 
